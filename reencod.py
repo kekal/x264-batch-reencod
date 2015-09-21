@@ -13,7 +13,7 @@ def read_cli(process):
     text = ''
     for line in process.stderr:
         line = line.rstrip() + '\n'
-        sys.stdout.write(line.encode('utf-8'))
+        sys.stdout.write(line)
         if any(string in line for string in ('[error]', 'wrong', 'does not', '[warning],', 'ffms', 'encoded', 'ffmpeg',
                                              'Input', 'Output', 'Stream')):
             text += line
@@ -67,7 +67,7 @@ def file_encode(path):
 
         process.wait()
 
-        log_file.write(text.encode('utf-8'))
+        log_file.write(text)
 
         remove(dir_path + '\\' + file_name + '.mp3')
         remove(dir_path + '\\output.mp4')
